@@ -1,0 +1,134 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body style="background-color: rgb(87, 87, 255);">
+
+    <script>
+    var yem1randomleft=Math.floor(Math.random()*1210+120);
+    var yem1randomtop=Math.floor(Math.random()*510+120);
+      
+      var pacmanwidth=50;
+      var pacmanheight=50;
+
+        var pacman=document.createElement("img");
+        pacman.src="pacman.png";
+        pacman.style.width=pacmanwidth+"px"
+        pacman.style.height=pacmanheight+"px"
+        pacman.style.position="absolute";
+        pacman.style.left="0px";
+        pacman.style.top="0px";
+        document.body.appendChild(pacman);
+
+        var yem=document.createElement("div");
+        yem.style.width="20px"
+        yem.style.position="absolute"
+        yem.style.height="20px"
+        yem.style.display="block"
+        yem.style.left=yem1randomleft+"px"
+        yem.style.top=yem1randomtop+"px"
+        yem.style.borderRadius="100%"
+        yem.style.backgroundColor="yellow"
+        document.body.appendChild(yem);
+        
+        var puansayac=0;
+        var puan=document.createElement("div");
+        puan.textContent=puansayac;
+        puan.style.position="absolute"
+        puan.style.left="677px"
+        puan.style.top="12px"
+        puan.style.fontSize="21px"
+        puan.style.zIndex=-1
+        document.body.appendChild(puan);
+
+        var sayacresmi=document.createElement("img")
+        sayacresmi.src="sayac.png"
+        sayacresmi.style.width="70px"
+        sayacresmi.style.height="50px"
+        sayacresmi.style.position="absolute"
+        sayacresmi.style.left="650px"
+        sayacresmi.style.top="0px"
+        sayacresmi.style.zIndex=-1
+        document.body.appendChild(sayacresmi)
+
+        var yenidenoyna=document.createElement("button")
+        yenidenoyna.textContent="Yeniden oyna";
+        yenidenoyna.style.position="absolute";
+        yenidenoyna.style.left="740px";
+        yenidenoyna.style.border="none";
+        yenidenoyna.style.cursor="pointer"
+        yenidenoyna.style.outline="none";
+        yenidenoyna.style.top="12px"
+        yenidenoyna.style.fontSize="15px"
+        yenidenoyna.style.backgroundColor="red"
+        yenidenoyna.style.color="black"
+        yenidenoyna.onclick=yenidenoyna1;
+        document.body.appendChild(yenidenoyna);
+
+        function yenidenoyna1()
+        {
+            location.reload()
+        }
+
+        var sagsayac=0;
+        var ustsayac=0;
+
+        var sagsayac1=1300;
+        var ustsayac1=600;
+        
+$(function(){
+    $(document).keydown(function(e){
+if(e.keyCode==39 && sagsayac<sagsayac1)
+{
+    sagsayac+=5;
+
+    pacman.style.left=sagsayac+"px";
+    pacman.style.transform="scaleX(+1)";
+
+}
+if(e.keyCode==37 && sagsayac>0)
+{
+    sagsayac-=5;
+    pacman.style.left=sagsayac+"px";
+    pacman.style.transform="scaleX(-1)";
+}
+if(e.keyCode==38 && ustsayac>0)
+{
+    ustsayac-=5;
+    pacman.style.top=ustsayac+"px";
+    pacman.style.transform="rotate(-90deg)";
+}
+if(e.keyCode==40 && ustsayac<ustsayac1)
+{
+    ustsayac+=5;
+    pacman.style.top=ustsayac+"px";
+    pacman.style.transform="rotate(90deg)";
+}
+   if(sagsayac>=yem1randomleft-pacmanwidth && ustsayac >= yem1randomtop - pacmanheight && sagsayac<yem1randomleft+30 && ustsayac<=yem1randomtop+30)
+   {
+    pacmanwidth+=5;
+    pacmanheight+=5;
+    pacman.style.width=pacmanwidth+"px";
+    pacman.style.height=pacmanheight+"px";
+    
+    sagsayac1-=5;
+    ustsayac1-=5;
+    puansayac+=5;
+    puan.textContent=puansayac;
+
+    yem1randomleft = Math.floor(Math.random() * 1210 + 120);
+    yem1randomtop = Math.floor(Math.random() * 510 + 120);
+    yem.style.left = yem1randomleft + "px"
+    yem.style.top = yem1randomtop + "px"
+   }
+  
+})
+
+})
+    </script>
+</body>
+</html>
